@@ -5,7 +5,22 @@
 
 using namespace std;
 
-// função para ler o arquivo e separar os bits em grupos de 8 bits
+// prototipo da função para ler o arquivo e separar os bits em grupos de 8 bits
+vector<string> separarBits(const string& arquivo);
+
+int main()
+{
+    string arquivo = "input.txt"; // nome do arquivo
+    vector<string> grupos = separarBits(arquivo); // chama a função para separar os bits
+
+    for(const string& grupo : grupos) // loop para imprimir os grupos de 8 bits
+    {
+        cout << grupo << endl; // imprime os grupos de bits
+    }
+
+    return 0;
+}
+
 vector<string> separarBits(const string& arquivo)
 {
     vector<string> gruposBits; // vetor para armazenar os grupos de bits
@@ -33,17 +48,4 @@ vector<string> separarBits(const string& arquivo)
     }
 
     return gruposBits; // retorna os grupos de bits
-}
-
-int main()
-{
-    string arquivo = "input.txt"; // nome do arquivo
-    vector<string> grupos = separarBits(arquivo); // chama a função para separar os bits
-
-    for(const string& grupo : grupos) // loop para imprimir os grupos de 8 bits
-    {
-        cout << grupo << endl; // imprime os grupos de bits
-    }
-
-    return 0;
 }
