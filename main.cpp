@@ -17,7 +17,7 @@ void conversaoDecimalASCII(const string& arquivo);
 
 int main()
 {
-    string arquivo = "../input.txt"; // nome do arquivo
+    string arquivo = "input.txt"; // nome do arquivo
     vector<string> grupos = separarBits(arquivo); // chama a função para separar os bits
 
     for(const string& grupo : grupos) // loop para imprimir os grupos de 8 bits
