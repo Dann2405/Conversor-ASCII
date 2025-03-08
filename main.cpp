@@ -2,21 +2,31 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
 // prototipo da função para ler o arquivo e separar os bits em grupos de 8 bits
 vector<string> separarBits(const string& arquivo);
 
+// Função para converter um grupo de 8 bits em número decimal
+int binarioParaDecimal(const string &binario);
+
+// Função que fará a conversão de decimal para ASCII
+void conversaoDecimalASCII(const string& arquivo);
+
 int main()
 {
-    string arquivo = "input.txt"; // nome do arquivo
+    string arquivo = "../input.txt"; // nome do arquivo
     vector<string> grupos = separarBits(arquivo); // chama a função para separar os bits
 
     for(const string& grupo : grupos) // loop para imprimir os grupos de 8 bits
     {
         cout << grupo << endl; // imprime os grupos de bits
     }
+
+    // Chama a função de conversão para binário -> decimal -> ASCII
+    conversaoDecimalASCII(arquivo); 
 
     return 0;
 }
@@ -48,4 +58,36 @@ vector<string> separarBits(const string& arquivo)
     }
 
     return gruposBits; // retorna os grupos de bits
+}
+
+// Função que converte de binário para decimal 
+int binarioParaDecimal(const string &binario) {
+    int decimal = 0;
+    for (int i = 0; i < 8; ++i) {
+        if (binario[i] == '1') {
+            decimal += (1 << (7 - i)); // Calcula a potência de 2 para cada bit '1'
+        }
+    }
+    return decimal;
+}
+
+// Função que converte de decimal para ASCII
+void conversaoDecimalASCII(const string& arquivo) {
+    vector<string> grupos = separarBits(arquivo); // Chama a função separarBits para obter os grupos de 8 bits
+
+    stack<int> pilhaDecimal; // Pilha para armazenar os números decimais
+
+    // Para cada grupo de 8 bits, converte para decimal e para ASCII
+    for (const string& grupo : grupos) {
+        // Converte o grupo binário para decimal
+        int decimal = binarioParaDecimal(grupo);
+
+        // Converte o valor decimal para o caractere ASCII correspondente
+        char caractere = static_cast<char>(decimal);
+
+        // Exibe o valor binário, o decimal e o caractere ASCII correspondente
+        cout << "Binario: " << grupo << " -> Decimal: " << decimal << " -> Caractere ASCII: " << caractere << endl; // a nível de entendimento
+
+        pilhaDecimal.push(decimal); // Empilha o valor decimal
+    }
 }
