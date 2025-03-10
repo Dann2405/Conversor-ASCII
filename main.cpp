@@ -66,7 +66,7 @@ void conversaoDecimalASCII(const string& arquivo)
     }
     
     // Desempilha da primeira pilha e empilha na segunda para inverter
-    while (!pilha1.empty())
+    while (!pilha1.empty())/*  */
     {
         pilha2.push(pilha1.top());
         pilha1.pop();
