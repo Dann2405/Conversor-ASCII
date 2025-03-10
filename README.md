@@ -15,7 +15,7 @@ Projeto desenvolvido como trabalho para a disciplina de Estrutura de Dados, util
 
 ## Compilação
 
-Para compilar o projeto, abra o terminal no diretório onde se encontra o arquivo fonte (por exemplo, `main.cpp`) e execute o comando:
+Para compilar o projeto, abra o terminal no diretório onde se encontra o arquivo fonte (`main.cpp`) e execute o comando:
 
 ```bash
 g++ -o conversao main.cpp
@@ -47,4 +47,4 @@ Texto convertido: Alo
 
 - Camila Ramos Gomes
 - Daniel Soares Oliveira Santos
-- Rauan Brandão
+- Rauan Brandão Batista
